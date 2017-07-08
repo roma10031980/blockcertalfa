@@ -1,0 +1,12 @@
+web:
+  build: .
+  command: python -u app.py
+  ports:
+    - "5000:5000"
+  volumes:
+    - .:/BlockcertAlfa
+  links:
+    - db
+
+db:
+  image: 'bitnami/mongodb:latest'

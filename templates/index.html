@@ -1,0 +1,25 @@
+{% extends "_base.html" %}
+
+{% block css %}
+	<link href="static/css/blockcertwm.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<div class="login">
+	{% if errors %}
+		<div class="alert alert-danger">
+			<p>Error Usuario o Contrasenia.</p>
+		</div>
+	{% endif %}
+
+    <form action="/login" method="post">
+
+    	<input type="text" name="username" placeholder="Usuario" required="required" />
+        <input type="password" name="password" placeholder="Contraseña" required="required" />
+        <button type="submit" class="btn btn-primary btn-block btn-large">Ingresar</button>
+    </form>
+    
+</div>
+
+{% endblock %}
