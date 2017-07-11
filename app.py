@@ -3,18 +3,20 @@ from pymongo import MongoClient
 import os
 import datetime
 from flask_bcrypt import Bcrypt
-global role_name
+# import certTools.setup as sp
+# begin import fisically setup.py
+import uuid
+
+from pip.req import parse_requirements
+from setuptools import setup, find_packages
+
+from certTools.cert_tools import __version__
+import certTools.cert_tools as _certTools
+# end import file setup.py
+
 bcrypt = Bcrypt(None)
 app = Flask(__name__, template_folder="templates")
 app.secret_key = "@$TA;VNSKJOWIAJFLSKDJVZSLKDlskja;sX,CMN"
-#app.config['SECRET_KEY'] = '$BUDehtise98&8*login\/m#/./there#$@fier__more__thies1~87'
-# client = MongoClient(os.environ['BLOCKCERTALFA_DB_1_PORT_27017_TCP_ADDR'], 27017)
-# db = client.blockcertdb
-#mongodb://user:password@localhost:27017/dbname
-
-# connect_string = "mongodb://root:root2017.@BLOCKCERTALFA_DB_1_PORT_27017_TCP_ADDR:27017/blockcertdb"
-# ModelUsers = MongoClient(connect_string)
-# Musers = ModelUsers.users
 client = MongoClient(os.environ['BLOCKCERTALFA_DB_1_PORT_27017_TCP_ADDR'], 27017)
 Musers = client.blockcertdb
 
@@ -60,7 +62,10 @@ def dashboard():
     # else:
     #     error = 1
     #     return render_template('index.html', errors=error)
-    return render_template('dashboard.html')
+    if not session.get('logged_in'):
+        return render_template('index.html')
+    else:
+        return render_template('dashboard.html')
 
 
 @app.route('/users')
@@ -115,12 +120,21 @@ def certtools():
         return render_template('cert-tools.html')
 
 
-@app.route('/create-certs')
+@app.route('/create-certs', methods=['GET','POST'])
 def createcerts():
     if not session.get('logged_in'):
         return render_template('index.html')
     else:
         return render_template('create-certs.html')
+
+
+@app.route('/save-certs', methods=['POST'])
+def SaveCerts():
+    if not session.get('logged_in'):
+        return render_template('index.html')
+    else:
+        hereok = _certTools.create_v2_certificate_template.create_certificate_template('82a4c9f2-3588-457b-80ea-da695571b8fc')
+        return hereok
 
 
 @app.route('/verfication-certs')

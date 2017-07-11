@@ -1,0 +1,214 @@
+{% extends "_base.html" %}
+
+{% block css %}
+    <link href="static/css/font-awesome.min.css" rel="stylesheet">
+    <link href="static/css/blockcertwm-dashboard.css" rel="stylesheet">
+    <link href="static/css/blockcertwm-snnipet.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<div class="home">
+    <div class="container-fluid display-table">
+        <div class="row display-table-row">
+            <div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box" id="navigation">
+                <div class="logo">
+                    <a hef="/dashboard"><img src="static/image/blockcerts.png" alt="blockcerts_logo" class="hidden-xs hidden-sm">
+                        <img src="static/image/blockcerts.png" alt="blockcerts_logo" class="visible-xs visible-sm circle-logo">
+                    </a>
+                </div>
+                <div class="navi">
+                    <ul>
+                        <li><a href="/dashboard"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Inicio</span></a></li>
+                        <li><a href="/users"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Usuarios</span></a></li>
+                        <li class="active"><a href="/cert-tools"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Cert Tools</span></a></li>
+                        <li><a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Statistics</span></a></li>
+                        <li><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Calender</span></a></li>
+                        <li><a href="#"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Setting</span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-10 col-sm-11 display-table-cell v-align">
+                <!--<button type="button" class="slide-toggle">Slide Toggle</button> -->
+                <div class="row">
+                    <header>
+                        <div class="col-md-7">
+                            <nav class="navbar-default pull-left">
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle collapsed" data-toggle="offcanvas" data-target="#side-menu" aria-expanded="false">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                </div>
+                            </nav>
+                            <!--<div class="search hidden-xs hidden-sm">
+                                <input type="text" placeholder="Search" id="search">
+                            </div>-->
+                        </div>
+                        <div class="col-md-12">
+                            <div class="header-rightside">
+                                <ul class="list-inline header-top pull-right">
+                                    <li class="hidden-xs"><a href="/verification-certs" class="add-project"><i class="fa fa-check"></i> Verificar Certificado </a></li>
+                                    <li class="hidden-xs"><a href="/create-certs" class="add-project"><i class="fa fa-file-text-o"></i> Crear Certificado </a></li>
+                                    <!--<li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+                                    <li>
+                                        <a href="#" class="icon-info">
+                                            <i class="fa fa-bell" aria-hidden="true"></i>
+                                            <span class="label label-primary">3</span>
+                                        </a>
+                                    </li>-->
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="http://jskrishna.com/work/merkury/images/user-pic.jpg" alt="user">
+                                            <b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <div class="navbar-content">
+                                                    <span>JS Krishna</span>
+                                                    <p class="text-muted small">
+                                                        me@jskrishna.com
+                                                    </p>
+                                                    <div class="divider">
+                                                    </div>
+                                                    <a href="#" class="view btn-sm active">View Profile</a>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </header>
+                </div>
+                <div class="user-dashboard">
+                    <h1>Nuevo Certificado</h1>
+                    <div class="row">
+                        <div class="col-md-12 col-lg-12">
+                            <div class="col-md-12">
+                                <form action="/save-certs" method="POST" enctype="multipart/form-data">
+                                <div id="contact-form" class="form-container" data-form-container>
+
+                                    <div class="input-container">
+                                        
+                                        <div class="col-md-5 row-certs">
+                                        <div class="row">
+                                            <div class="form-title">
+                                                <span>Datos Personales</span>
+                                            </div>
+                                        </div>
+                                            <div class="row">
+                                                <span class="req-input" >
+                                                    <span class="input-status" data-toggle="tooltip" data-placement="top" title="Input Your First Name."> </span>
+                                                    <input type="text" name="name_stud" data-min-length="10" placeholder="Nombre">
+                                                </span>
+                                            </div>
+
+                                            <div class="row">
+                                                <span class="req-input">
+                                                    <span class="input-status" data-toggle="tooltip" data-placement="top" titulo="input your LastName"></span>
+                                                    <input type="text" name="lastname_stud" data-min-length="12" placeholder="Apellido">   
+                                                </span>
+                                            </div>
+
+                                            <div class="row">
+                                                <span class="req-input">
+                                                    <span class="input-status" data-toggle="tooltip" data-placement="top" titulo="input your Address"></span>
+                                                    <input type="text" name="address_stud" data-min-length="30" placeholder="Direccion">   
+                                                </span>
+                                            </div>
+
+                                            <div class="row">
+                                                <span class="req-input">
+                                                    <span class="input-status" data-toggle="tooltip" data-placement="top" title="Please Input Your Email."> </span>
+                                                    <input type="email" name="email_stud" placeholder="Email">
+                                                </span>
+                                            </div>
+
+                                            <div class="row">
+                                                <span class="req-input">
+                                                    <span class="input-status" data-toggle="tooltip" data-placement="top" title="Please Input Your Phone Number."> </span>
+                                                    <input type="tel" name="phone_stud" placeholder="Telefono Fijo">
+                                                </span>
+                                            </div>
+
+                                            <div class="row">
+                                                <span class="req-input">
+                                                    <span class="input-status" data-toggle="tooltip" data-placement="top" title="Please Input Your Phone Number."> </span>
+                                                    <input type="tel" name="cellphone_stud" placeholder="Celular">
+                                                </span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-5 row-certs">
+                                        <div class="row">
+                                            <div class="form-title">
+                                                <span>Descripcion del Certificado</span>
+                                            </div>
+                                        </div>
+
+                                            <div class="row">
+                                                <span class="req-input">
+                                                    <span class="input-status" data-toggle="tooltip" data-placement="top" title="Please Input Your title"></span>
+                                                    <input type="text" name="title_stud" data-min-length="20" placeholder="Titulo">
+                                                </span>
+                                            </div>
+
+                                            <div class="row">
+                                                <span class="req-input message-box">
+                                                    <span class="input-status" data-toggle="tooltip" data-placement="top" title="Please Include a Description."> </span>
+                                                    <textarea type="textarea" name="descripcion_stud" data-min-length="20" placeholder="Descripcion"></textarea>
+                                            </div>
+                                            
+                                            <div class="row">
+                                                <span class="req-input img-">
+                                                <span class="input-status" data-toggle="tooltip" data-placement="top" title="Please Include an Image Logo ."> </span>
+                                                <input type="file" name="file_usserlogo" id="img">
+                                            </div>
+                                            <!--<div class="row">
+                                                <span class="req-input message-box">
+                                                <span class="input-status" data-toggle="tooltip" data-placement="top" title="Please Include a Cert."> </span>
+                                                <input type="file" name="file_ussercert">
+                                            </div>-->
+                                            <div class="row">
+                                                <span class="req-input img-">
+                                                <span class="input-status" data-toggle="tooltip" data-placement="top" title="Please Include an Image Sign User."> </span>
+                                                <input type="file" name="file_ussersign">
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="col-md-5 row-certs">
+                                            <div class="row submit-row">
+                                                <button type="submit" class="btn btn-block submit-form">Crear certificado</button>
+                                            </div>                                        
+                                        </div>
+                                    
+                                        <div class="col-md-5 row-certs">
+                                            <div class="row submit-row">
+                                                <button type="reset" class="btn btn-block btn-warning btn-certs-warning">Borrar datos</button>
+                                            </div>                                        
+                                        </div>
+                                    </div>
+
+                                </div>
+                                </form>
+                            </div>                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block js %}
+    <script src="static/js/blockcertwm-dashboard.js" type="text/javascript"></script>
+    <script src="static/js/blockcertwm-snnipet.js" type="text/javascript"></script>
+{% endblock %}
